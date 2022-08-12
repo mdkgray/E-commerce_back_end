@@ -92,7 +92,7 @@ router.post('/', (req, res) => {
     });
 });
 
-// UPDATE PRODUCT 
+// UPDATE A PRODUCT 
 router.put('/:id', (req, res) => {
   // update product data
   Product.update(req.body, {
@@ -134,7 +134,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// DELETE PRODUCT 
+// DELETE A PRODUCT 
 router.delete('/:id', async (req, res) => {
   // delete one product by its `id` value
   try {
