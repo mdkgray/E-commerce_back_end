@@ -68,7 +68,7 @@ router.put('/:id', async (req, res) => {
       return;
     }
 
-    res.status(200).json(categoryData);  
+    res.status(200).json(categoryData); 
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
@@ -81,7 +81,7 @@ router.delete('/:id', async (req, res) => {
   try {
     const categoryData = await Category.destroy({
       where: {
-        id: require.params.id
+        id: req.params.id
       }
     });
 

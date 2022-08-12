@@ -53,37 +53,15 @@ router.get('/:id', async (req, res) => {
 });
 
 // CREATE A TAG 
-router.post('/', (req, res) => {
-  // create a new tag
-  Tag.create(req.body)
-  .then((tag) => {
-    if (req.body.productIds.length) {
-      const productTagIdArr = req.body.productIds.map((product_id) => {
-        return {
-          tag_id: tag.id,
-          product_id
-        };
-      });
-      return ProductTag.bulkCreate(productTagIdArr);
-    }
-    res.status(200).json(tag);
-    })
-    .then((productTagIds) => res.status(200).json(productTagIds))
-    .catch((err) => {
+router.post('/', async (req, res) => {
+  try {
+    const tagData = await Tag.create(req.body);
+    res.status(200).json(tagData);
+  } catch (err) {
     console.log(err);
-    res/status(400).json(err);
-  });
+    res.status(400).json(err);
+  }
 });
-
-// // CREATE a location
-// router.post('/', async (req, res) => {
-//   try {
-//     const locationData = await Location.create(req.body);
-//     res.status(200).json(locationData);
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// });
 
 // UPDATE A TAG
 router.put('/:id', (req, res) => {
