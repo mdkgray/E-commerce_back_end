@@ -5,8 +5,6 @@ const { Category, Product } = require('../../models');
 
 // GET ALL CATEGORIES
 router.get('/', async (req, res) => {
-  // find all categories
-  // be sure to include its associated Products
   try {
     const categoryData = await Category.findAll({
       attributes: ['id', 'category_name'],
@@ -22,8 +20,6 @@ router.get('/', async (req, res) => {
 
 // GET ONE CATEGORY
 router.get('/:id', async (req, res) => {
-  // find one category by its `id` value
-  // be sure to include its associated Products
   try {
     const categoryData = await Category.findByPk(req.params.id, {
       attributes: ['id', 'category_name'],
@@ -55,12 +51,9 @@ router.post('/', async (req, res) => {
 
 // UPDATE A CATEGORY
 router.put('/:id', async (req, res) => {
-  // update a category by its `id` value
   try{
     const categoryData = await Category.update(req.body, {
-      where: {
-        id: req.body.id,
-      },
+      where: { id: req.params.id }
     });
 
     if (!categoryData) {
@@ -77,12 +70,9 @@ router.put('/:id', async (req, res) => {
 
 // DELETE A CATEGORY 
 router.delete('/:id', async (req, res) => {
-  // delete a category by its `id` value
   try {
     const categoryData = await Category.destroy({
-      where: {
-        id: req.params.id
-      }
+      where: { id: req.params.id }
     });
 
     if (!categoryData) {
