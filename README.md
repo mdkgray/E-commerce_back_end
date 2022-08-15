@@ -42,4 +42,4 @@ Sequelize:
 
 To see the functionality of the e-commerce back end with Insomnia, click on the link below.
 
-[Demonstration Video](https://drive.google.com/file/d/1U1m3rVNdVXF-6xGCLQ39b_FOZhg_Bdpm/view)
+[Demonstration Video](https://drive.google.com/file/d/1_i54mf57U_600QAt-5Rv_RnfMSpO-BT0/view?usp=sharing)
